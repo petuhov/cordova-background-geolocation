@@ -649,6 +649,12 @@ public class CDVBackgroundGeolocation extends CordovaPlugin {
         SharedPreferences.Editor editor = settings.edit();
 
         try {
+            if (preferences.contains("cordova-background-geolocation-license")) {
+                mConfig.put("license", preferences.getString("cordova-background-geolocation-license", null));
+            }
+            if (preferences.contains("cordova-background-geolocation-orderId")) {
+                mConfig.put("orderId", preferences.getString("cordova-background-geolocation-orderId", null));
+            }
             if (mConfig.has("isMoving")) {
                 editor.putBoolean("isMoving", mConfig.getBoolean("isMoving"));
             }
